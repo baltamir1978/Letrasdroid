@@ -48,8 +48,21 @@ emulador, que **no oye música de verdad**.
 - **El enlace a Apple Music pasa a ser a YouTube**: una búsqueda «artista título»
   (`https://www.youtube.com/results?search_query=…`), que abre la app de YouTube si está instalada
   y el navegador si no (en GrapheneOS puede no haber app de YouTube).
-- **Tiene que funcionar en GrapheneOS**, sin Google Play: comprobar lo primero que el SDK de
-  ShazamKit para Android no lo necesita.
+- **Tiene que funcionar en GrapheneOS**, sin Google Play. El SDK de ShazamKit sólo depende de
+  coroutines, OkHttp y Retrofit (ver el `CLAUDE.md` común): falta confirmarlo en el manifiesto del
+  AAR al descargarlo.
+
+## Lo que hace falta del portal de Apple (lo hace Bruno, con su cuenta)
+
+1. **Identifiers › + › Media IDs**: uno nuevo con **ShazamKit** marcado.
+2. **Keys › +**: una clave con **Media Services (MusicKit, ShazamKit)**, asociada a ese Media ID.
+   El `.p8` sólo se descarga una vez: a `~/.config/shazamkit/`.
+3. `~/.config/shazamkit/token.env` (permisos 600) con `SHAZAM_KEY_ID`, `SHAZAM_TEAM_ID` y
+   `SHAZAM_KEY_FILE`.
+4. **El AAR**: developer.apple.com/shazamkit/android, a `libs/` (ignorado por git).
+
+Con eso, `Tools/shazam-token.py` da el token, que entra en `local.properties` al compilar.
+`Tools/shazam-token.py --comprobar <token>` dice cuándo caduca.
 
 ## Trampas que vienen de las apps hermanas
 
