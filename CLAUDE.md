@@ -43,9 +43,13 @@ emulador, que **no oye música de verdad**.
 | VoiceOver, Dynamic Type | TalkBack (`semantics`, la línea actual como seleccionada) y tamaño de letra del sistema en `sp` |
 | String Catalogs | `strings.xml` por idioma |
 
-## Pendiente de decidir con Bruno
+## Decidido con Bruno (21-oct-2026)
 
-- **El enlace a Apple Music**: en Android, ¿Spotify, YouTube Music, o ninguno?
+- **El enlace a Apple Music pasa a ser a YouTube**: una búsqueda «artista título»
+  (`https://www.youtube.com/results?search_query=…`), que abre la app de YouTube si está instalada
+  y el navegador si no (en GrapheneOS puede no haber app de YouTube).
+- **Tiene que funcionar en GrapheneOS**, sin Google Play: comprobar lo primero que el SDK de
+  ShazamKit para Android no lo necesita.
 
 ## Trampas que vienen de las apps hermanas
 
