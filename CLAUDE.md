@@ -4,16 +4,40 @@ Versión para Android de **Letras** (Letrasios, iOS), escrita **desde cero en Ko
 Compose**. Lo común a las apps de Android (firma, `versionCode`, secretos, distribución, ShazamKit)
 está en el `CLAUDE.md` de la carpeta de proyectos; aquí va lo propio de esta.
 
-## Estado (21-oct-2026)
+## Estado (5-nov-2026)
 
-**Sin empezar.** Es la **piloto de Android**: es la más pequeña (unas 1.400 líneas en iOS) y con
-ella se comprueba lo más arriesgado de todo el lado Android, antes de RadioDroid, que lo reutiliza:
+**0.1: compila y pasan 9 pruebas; sin probar en el móvil** (el micrófono no se puede probar
+aquí). APK en `~/Documentos/Letras-0.1.apk`. En el móvil se llama **Letras**, como en el iPhone;
+paquete `es.altamirano.letras`, clave en `~/.android/claves/letras-release.*`.
 
-1. que el SDK de ShazamKit para Android y su *developer token* funcionan;
-2. la cadena entera: SDK instalado en el Mac, `./gradlew`, firma y distribución.
+**Sin ShazamKit** (Bruno da de baja su cuenta de Apple, 5-nov-2026): el plan de octubre (SDK de
+ShazamKit para Android con su *developer token*) ya no vale. Se reconoce como en RadioDroid: la
+huella se calcula en el móvil (`core/ShazamSignature.kt`, copiada tal cual de RadioDroid, que la
+comprobó byte a byte contra shazamio) y se manda a `amp.shazam.com` como hace la app de Shazam
+(`net/Net.kt`). **No es una API pública**: si Shazam la cambia, deja de reconocer.
 
-En el Mac todavía no hay nada de Android instalado, y Bruno aún no tiene móvil: hasta entonces,
-emulador, que **no oye música de verdad**.
+Hecho, traducido de Letrasios:
+- `data/Listener.kt` (`SongListener`): `AudioRecord` a 16 kHz mono en un búfer circular de 12 s;
+  primer intento con 5 s de audio, luego cada 3 s nuevos con los últimos 10 s; tras reconocer la
+  que suena, 8 s antes de volver a preguntar; cuatro fallos seguidos o pasar de la duración de
+  LRCLIB quitan la canción. Shazam da el segundo de la canción en que **empieza** el trozo, y se
+  sabe cuándo se grabó ese principio: posición = ese segundo + lo transcurrido. Sólo con la app a
+  la vista (`onStart`/`onStop`, sin servicio), y la pantalla no se apaga mientras escucha.
+- Letra de LRCLIB (`core/Lyrics.kt`, `LyricsService`): tal cual, título limpio y artista
+  principal; prefiere la sincronizada y el título exacto; `[offset:]` respetado.
+- Pantallas (`ui/Main.kt`): escuchando / en pausa / «no reconozco», permiso denegado (con botón a
+  Ajustes), canción con carátula (Coil) y enlace a **YouTube** (búsqueda «artista título», como se
+  decidió), letra sincronizada (0,3 s de adelanto, la línea a un tercio, deja de seguir 4 s al
+  arrastrar, TalkBack con la línea actual seleccionada y «Pausa instrumental»), sin sincronizar,
+  instrumental, sin letra y sin conexión. Historial por días (corazón, deslizar para borrar o
+  marcar, «Borrar» conserva favoritas, 500 como mucho, la misma canción en 15 min no se repite),
+  letra de una canción pasada como texto, y «Acerca de».
+- Colores de `Theme.swift` (verde #0B6F53 / menta #4FD8A6), icono de iOS
+  (`Tools/icono-desde-ios.sh`), 6 idiomas desde el catálogo de iOS (`Tools/strings-desde-ios.py`).
+
+Falta: probarlo en el móvil (sobre todo cuánto tarda en reconocer con el micrófono y si la
+sincronización cuadra; el audio de `AudioRecord` llega con algo de retraso, sin corregir),
+widgets o accesos directos si Bruno los quiere.
 
 ## La especificación es el original
 
@@ -37,9 +61,9 @@ emulador, que **no oye música de verdad**.
 
 | En iOS | Aquí |
 |---|---|
-| `SHManagedSession` (gestiona el micrófono sola) | SDK de ShazamKit para Android: sesión de *streaming* alimentada con `AudioRecord` (PCM 16 bits) |
+| `SHManagedSession` (gestiona el micrófono sola) | `AudioRecord` (PCM 16 bits, 16 kHz) + la huella y la petición de Shazam de RadioDroid, sin ShazamKit |
 | Permiso de micrófono | `RECORD_AUDIO` en tiempo de ejecución. Sólo se escucha en primer plano, así que no hace falta servicio en primer plano: parar en `onStop` |
-| `history.json` en Documentos | Room o un JSON en `filesDir` (con 500 entradas basta el JSON) |
+| `history.json` en Documentos | `historial.json` en `filesDir` |
 | VoiceOver, Dynamic Type | TalkBack (`semantics`, la línea actual como seleccionada) y tamaño de letra del sistema en `sp` |
 | String Catalogs | `strings.xml` por idioma |
 
@@ -48,25 +72,12 @@ emulador, que **no oye música de verdad**.
 - **El enlace a Apple Music pasa a ser a YouTube**: una búsqueda «artista título»
   (`https://www.youtube.com/results?search_query=…`), que abre la app de YouTube si está instalada
   y el navegador si no (en GrapheneOS puede no haber app de YouTube).
-- **Tiene que funcionar en GrapheneOS**, sin Google Play. El SDK de ShazamKit sólo depende de
-  coroutines, OkHttp y Retrofit (ver el `CLAUDE.md` común): falta confirmarlo en el manifiesto del
-  AAR al descargarlo.
-
-## Lo que hace falta del portal de Apple (lo hace Bruno, con su cuenta)
-
-1. **Identifiers › + › Media IDs**: uno nuevo con **ShazamKit** marcado.
-2. **Keys › +**: una clave con **Media Services (MusicKit, ShazamKit)**, asociada a ese Media ID.
-   El `.p8` sólo se descarga una vez: a `~/.config/shazamkit/`.
-3. `~/.config/shazamkit/token.env` (permisos 600) con `SHAZAM_KEY_ID`, `SHAZAM_TEAM_ID` y
-   `SHAZAM_KEY_FILE`.
-4. **El AAR**: developer.apple.com/shazamkit/android, a `libs/` (ignorado por git).
-
-Con eso, `Tools/shazam-token.py` da el token, que entra en `local.properties` al compilar.
-`Tools/shazam-token.py --comprobar <token>` dice cuándo caduca.
+- **Tiene que funcionar en GrapheneOS**, sin Google Play: no usa nada de Google.
 
 ## Trampas que vienen de las apps hermanas
 
 - **LRCLIB no encuentra las colaboraciones**: buscar también por el artista principal, y por título
   filtrando por artista (aprendido en MacRadio).
 - La etiqueta LRC `[offset:]` mueve toda la letra; respetarla.
-- El token de ShazamKit **nunca** en el repositorio, que será público como el original.
+- Shazam: el `offset` es el segundo de la canción en que **empieza** el trozo enviado (medido en
+  RadioDroid), no el del final.

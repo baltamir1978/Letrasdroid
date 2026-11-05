@@ -12,5 +12,4 @@ captures/
 .cxx/
 .DS_Store
 
-# SDK de ShazamKit descargado del portal de Apple
-libs/shazamkit*.aar
+__pycache__/

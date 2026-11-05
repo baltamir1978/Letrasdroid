@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_text">Apri l\'app vicino alla musica: Letras riconosce la canzone in riproduzione e ne mostra il testo sincronizzato.</string>
+    <string name="open_settings">Apri Impostazioni</string>
+    <string name="about">Informazioni su Letras</string>
+    <string name="delete">Elimina</string>
+    <string name="clear_history">Cancella cronologia</string>
+    <string name="searching_lyrics">Ricerca del testo…</string>
+    <string name="credits">Riconoscimenti</string>
+    <string name="stop_listening">Smetti di ascoltare</string>
+    <string name="privacy_text">L\'audio non viene registrato né salvato: a Shazam viene inviata solo un\'impronta digitale per identificare la canzone. L\'app non raccoglie dati e non usa strumenti di analisi.</string>
+    <string name="paused">In pausa</string>
+    <string name="listening">In ascolto…</string>
+    <string name="listen">Ascolta</string>
+    <string name="no_lyrics_song">Questa canzone non ha testo.</string>
+    <string name="history">Cronologia</string>
+    <string name="instrumental">Strumentale</string>
+    <string name="history_empty_hint">I brani riconosciuti da Letras appariranno qui.</string>
+    <string name="not_synced">Testo non sincronizzato</string>
+    <string name="lyrics_credit">Testi</string>
+    <string name="mic_needed">Letras ha bisogno del microfono per riconoscere la musica in riproduzione. Puoi attivarlo in Impostazioni.</string>
+    <string name="done">Fine</string>
+    <string name="mark_favorite">Segna come preferito</string>
+    <string name="not_found">Non abbiamo trovato il testo di questa canzone.</string>
+    <string name="cant_recognize">Non riconosco ciò che suona. Avvicina il telefono alla musica.</string>
+    <string name="download_failed">Impossibile scaricare il testo.</string>
+    <string name="instrumental_break">Pausa strumentale</string>
+    <string name="play_music_hint">Metti della musica vicino al telefono e comparirà il testo.</string>
+    <string name="privacy">Privacy</string>
+    <string name="tap_mic_hint">Tocca il microfono per ascoltare di nuovo.</string>
+    <string name="unmark_favorite">Rimuovi dai preferiti</string>
+    <string name="music_recognition">Riconoscimento musicale</string>
+    <string name="retry">Riprova</string>
+    <string name="no_mic">Nessun accesso al microfono</string>
+    <string name="no_songs">Nessun brano</string>
+    <string name="no_connection">Nessuna connessione</string>
+    <string name="no_lyrics">Nessun testo</string>
+    <string name="version">Versione</string>
+    <string name="clear_confirm">Cancellare la cronologia? I brani segnati con il cuore restano.</string>
+    <string name="search_youtube">Cerca su YouTube</string>
+    <string name="open_youtube">Apri in YouTube</string>
+    <string name="back">Indietro</string>
+    <string name="cancel">Annulla</string>
+</resources>

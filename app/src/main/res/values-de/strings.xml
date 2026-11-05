@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_text">Öffne die App in der Nähe der Musik: Letras erkennt den laufenden Song und zeigt den Songtext synchron dazu an.</string>
+    <string name="open_settings">Einstellungen öffnen</string>
+    <string name="about">Über Letras</string>
+    <string name="delete">Löschen</string>
+    <string name="clear_history">Verlauf löschen</string>
+    <string name="searching_lyrics">Songtext wird gesucht …</string>
+    <string name="credits">Danksagung</string>
+    <string name="stop_listening">Zuhören beenden</string>
+    <string name="privacy_text">Audio wird weder aufgenommen noch gespeichert: Nur ein digitaler Fingerabdruck wird an Shazam gesendet, um den Song zu erkennen. Die App sammelt keine Daten und nutzt keine Analyse-Tools.</string>
+    <string name="paused">Pausiert</string>
+    <string name="listening">Hört zu …</string>
+    <string name="listen">Zuhören</string>
+    <string name="no_lyrics_song">Dieser Song hat keinen Text.</string>
+    <string name="history">Verlauf</string>
+    <string name="instrumental">Instrumental</string>
+    <string name="history_empty_hint">Songs, die Letras erkennt, erscheinen hier.</string>
+    <string name="not_synced">Songtext nicht synchronisiert</string>
+    <string name="lyrics_credit">Songtexte</string>
+    <string name="mic_needed">Letras benötigt das Mikrofon, um die laufende Musik zu erkennen. Du kannst es in den Einstellungen aktivieren.</string>
+    <string name="done">Fertig</string>
+    <string name="mark_favorite">Als Favorit markieren</string>
+    <string name="not_found">Für diesen Song wurde kein Text gefunden.</string>
+    <string name="cant_recognize">Was gerade läuft, wird nicht erkannt. Halte das Handy näher an die Musik.</string>
+    <string name="download_failed">Der Songtext konnte nicht geladen werden.</string>
+    <string name="instrumental_break">Instrumentalpause</string>
+    <string name="play_music_hint">Spiele Musik in der Nähe des Handys ab und der Songtext erscheint.</string>
+    <string name="privacy">Datenschutz</string>
+    <string name="tap_mic_hint">Tippe auf das Mikrofon, um wieder zuzuhören.</string>
+    <string name="unmark_favorite">Aus Favoriten entfernen</string>
+    <string name="music_recognition">Musikerkennung</string>
+    <string name="retry">Erneut versuchen</string>
+    <string name="no_mic">Kein Mikrofonzugriff</string>
+    <string name="no_songs">Keine Songs</string>
+    <string name="no_connection">Keine Verbindung</string>
+    <string name="no_lyrics">Kein Songtext</string>
+    <string name="version">Version</string>
+    <string name="clear_confirm">Verlauf löschen? Mit Herz markierte Songs bleiben erhalten.</string>
+    <string name="search_youtube">Auf YouTube suchen</string>
+    <string name="open_youtube">In YouTube öffnen</string>
+    <string name="back">Zurück</string>
+    <string name="cancel">Abbrechen</string>
+</resources>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_text">Open the app near the music: Letras recognizes the song that\'s playing and shows its lyrics in sync with it.</string>
+    <string name="open_settings">Open Settings</string>
+    <string name="about">About Letras</string>
+    <string name="delete">Delete</string>
+    <string name="clear_history">Clear History</string>
+    <string name="searching_lyrics">Looking for the lyrics…</string>
+    <string name="credits">Credits</string>
+    <string name="stop_listening">Stop listening</string>
+    <string name="privacy_text">Audio is never recorded or stored: only a digital fingerprint is sent to Shazam to identify the song. The app collects no data and uses no analytics.</string>
+    <string name="paused">Paused</string>
+    <string name="listening">Listening…</string>
+    <string name="listen">Listen</string>
+    <string name="no_lyrics_song">This song has no lyrics.</string>
+    <string name="history">History</string>
+    <string name="instrumental">Instrumental</string>
+    <string name="history_empty_hint">Songs Letras recognizes will appear here.</string>
+    <string name="not_synced">Lyrics not synced</string>
+    <string name="lyrics_credit">Lyrics</string>
+    <string name="mic_needed">Letras needs the microphone to recognize the music that\'s playing. You can turn it on in Settings.</string>
+    <string name="done">Done</string>
+    <string name="mark_favorite">Mark as Favorite</string>
+    <string name="not_found">We couldn\'t find the lyrics for this song.</string>
+    <string name="cant_recognize">I can\'t recognize what\'s playing. Bring the phone closer to the music.</string>
+    <string name="download_failed">The lyrics couldn\'t be downloaded.</string>
+    <string name="instrumental_break">Instrumental break</string>
+    <string name="play_music_hint">Play music near the phone and the lyrics will appear.</string>
+    <string name="privacy">Privacy</string>
+    <string name="tap_mic_hint">Tap the microphone to listen again.</string>
+    <string name="unmark_favorite">Remove from Favorites</string>
+    <string name="music_recognition">Music recognition</string>
+    <string name="retry">Try Again</string>
+    <string name="no_mic">No microphone access</string>
+    <string name="no_songs">No songs</string>
+    <string name="no_connection">No connection</string>
+    <string name="no_lyrics">No lyrics</string>
+    <string name="version">Version</string>
+    <string name="clear_confirm">Clear the history? Songs marked with the heart are kept.</string>
+    <string name="search_youtube">Search YouTube</string>
+    <string name="open_youtube">Open in YouTube</string>
+    <string name="back">Back</string>
+    <string name="cancel">Cancel</string>
+</resources>

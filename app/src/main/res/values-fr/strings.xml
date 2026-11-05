@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_text">Ouvrez l\'app près de la musique : Letras reconnaît la chanson en cours et affiche ses paroles synchronisées.</string>
+    <string name="open_settings">Ouvrir Réglages</string>
+    <string name="about">À propos de Letras</string>
+    <string name="delete">Supprimer</string>
+    <string name="clear_history">Effacer l\'historique</string>
+    <string name="searching_lyrics">Recherche des paroles…</string>
+    <string name="credits">Crédits</string>
+    <string name="stop_listening">Arrêter l\'écoute</string>
+    <string name="privacy_text">L\'audio n\'est ni enregistré ni conservé : seule une empreinte numérique est envoyée à Shazam pour identifier la chanson. L\'app ne collecte aucune donnée et n\'utilise aucun outil d\'analyse.</string>
+    <string name="paused">En pause</string>
+    <string name="listening">Écoute…</string>
+    <string name="listen">Écouter</string>
+    <string name="no_lyrics_song">Cette chanson n\'a pas de paroles.</string>
+    <string name="history">Historique</string>
+    <string name="instrumental">Instrumental</string>
+    <string name="history_empty_hint">Les chansons reconnues par Letras apparaîtront ici.</string>
+    <string name="not_synced">Paroles non synchronisées</string>
+    <string name="lyrics_credit">Paroles</string>
+    <string name="mic_needed">Letras a besoin du micro pour reconnaître la musique en cours. Vous pouvez l\'activer dans Réglages.</string>
+    <string name="done">OK</string>
+    <string name="mark_favorite">Marquer comme favori</string>
+    <string name="not_found">Paroles introuvables pour cette chanson.</string>
+    <string name="cant_recognize">Impossible de reconnaître ce qui joue. Rapprochez le téléphone de la musique.</string>
+    <string name="download_failed">Impossible de télécharger les paroles.</string>
+    <string name="instrumental_break">Pause instrumentale</string>
+    <string name="play_music_hint">Mettez de la musique près du téléphone et les paroles apparaîtront.</string>
+    <string name="privacy">Confidentialité</string>
+    <string name="tap_mic_hint">Touchez le micro pour écouter à nouveau.</string>
+    <string name="unmark_favorite">Retirer des favoris</string>
+    <string name="music_recognition">Reconnaissance musicale</string>
+    <string name="retry">Réessayer</string>
+    <string name="no_mic">Pas d\'accès au micro</string>
+    <string name="no_songs">Aucune chanson</string>
+    <string name="no_connection">Pas de connexion</string>
+    <string name="no_lyrics">Pas de paroles</string>
+    <string name="version">Version</string>
+    <string name="clear_confirm">Effacer l\'historique ? Les chansons marquées d\'un cœur sont conservées.</string>
+    <string name="search_youtube">Rechercher sur YouTube</string>
+    <string name="open_youtube">Ouvrir dans YouTube</string>
+    <string name="back">Retour</string>
+    <string name="cancel">Annuler</string>
+</resources>

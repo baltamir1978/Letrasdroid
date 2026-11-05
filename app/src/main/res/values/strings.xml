@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Letras</string>
+    <string name="about_text">Abre la app cerca de la música: Letras reconoce la canción que suena y muestra su letra sincronizada con ella.</string>
+    <string name="open_settings">Abrir Ajustes</string>
+    <string name="about">Acerca de Letras</string>
+    <string name="delete">Borrar</string>
+    <string name="clear_history">Borrar el historial</string>
+    <string name="searching_lyrics">Buscando la letra…</string>
+    <string name="credits">Créditos</string>
+    <string name="stop_listening">Dejar de escuchar</string>
+    <string name="privacy_text">El audio no se graba ni se guarda: solo se envía a Shazam una huella digital para identificar la canción. La app no recoge datos ni usa analítica.</string>
+    <string name="paused">En pausa</string>
+    <string name="listening">Escuchando…</string>
+    <string name="listen">Escuchar</string>
+    <string name="no_lyrics_song">Esta canción no tiene letra.</string>
+    <string name="history">Historial</string>
+    <string name="instrumental">Instrumental</string>
+    <string name="history_empty_hint">Las canciones que reconozca Letras aparecerán aquí.</string>
+    <string name="not_synced">Letra sin sincronizar</string>
+    <string name="lyrics_credit">Letras</string>
+    <string name="mic_needed">Letras necesita el micrófono para reconocer la música que suena. Puedes activarlo en Ajustes.</string>
+    <string name="done">Listo</string>
+    <string name="mark_favorite">Marcar como favorita</string>
+    <string name="not_found">No hemos encontrado la letra de esta canción.</string>
+    <string name="cant_recognize">No reconozco lo que suena. Acerca el móvil a la música.</string>
+    <string name="download_failed">No se ha podido descargar la letra.</string>
+    <string name="instrumental_break">Pausa instrumental</string>
+    <string name="play_music_hint">Pon música cerca del móvil y aparecerá la letra.</string>
+    <string name="privacy">Privacidad</string>
+    <string name="tap_mic_hint">Pulsa el micrófono para volver a escuchar.</string>
+    <string name="unmark_favorite">Quitar de favoritas</string>
+    <string name="music_recognition">Reconocimiento musical</string>
+    <string name="retry">Reintentar</string>
+    <string name="no_mic">Sin acceso al micrófono</string>
+    <string name="no_songs">Sin canciones</string>
+    <string name="no_connection">Sin conexión</string>
+    <string name="no_lyrics">Sin letra</string>
+    <string name="version">Versión</string>
+    <string name="clear_confirm">¿Borrar el historial? Se conservan las canciones marcadas con el corazón.</string>
+    <string name="search_youtube">Buscar en YouTube</string>
+    <string name="open_youtube">Abrir en YouTube</string>
+    <string name="back">Volver</string>
+    <string name="cancel">Cancelar</string>
+</resources>
