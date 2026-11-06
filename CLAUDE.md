@@ -6,6 +6,8 @@ está en el `CLAUDE.md` de la carpeta de proyectos; aquí va lo propio de esta.
 
 ## Estado (5-nov-2026)
 
+**0.1.1 (6-nov-2026): modo escritorio** — en ventana ancha (modo escritorio, tableta) el contenido se centra a 720 dp con el margen como `contentPadding` (la rueda del ratón desplaza también sobre él), y la actividad no se recrea al redimensionar (`configChanges`). Piezas en `ui/Adaptive.kt`; sin probar en modo escritorio de verdad. La letra, centrada a 640 dp; las pantallas vacías, desplazables si la ventana es baja (`CenteredScroll`), y en el historial el clic derecho hace lo mismo que deslizar (favorita / borrar). APK en `~/Documentos/Letras-0.1.1.apk`.
+
 **0.1: compila y pasan 9 pruebas; sin probar en el móvil** (el micrófono no se puede probar
 aquí). APK en `~/Documentos/Letras-0.1.apk`. En el móvil se llama **Letras**, como en el iPhone;
 paquete `es.altamirano.letras`, clave en `~/.android/claves/letras-release.*`.

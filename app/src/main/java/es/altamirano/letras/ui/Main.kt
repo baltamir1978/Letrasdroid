@@ -63,6 +63,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.SwipeToDismissBox
 import androidx.compose.material3.SwipeToDismissBoxValue
 import androidx.compose.material3.Text
@@ -235,7 +237,7 @@ private fun Root() {
 @Composable
 private fun ListeningView(state: ListenState, onListen: () -> Unit) {
     val on = state.phase == Phase.LISTENING
-    Column(Modifier.fillMaxSize().padding(32.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
+    CenteredScroll(PaddingValues(32.dp)) {
         // El micrófono en un disco suave, con una onda que se mueve mientras escucha.
         val pulse by rememberInfiniteTransition(label = "onda").animateFloat(0.55f, 1f,
             infiniteRepeatable(tween(700), RepeatMode.Reverse), label = "onda")
@@ -268,7 +270,7 @@ private fun MicDenied(onRetry: () -> Unit) {
 
 @Composable
 private fun Empty(icon: androidx.compose.ui.graphics.vector.ImageVector, title: String, text: String, actions: @Composable () -> Unit = {}) {
-    Column(Modifier.fillMaxSize().padding(32.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
+    CenteredScroll(PaddingValues(32.dp)) {
         Icon(icon, null, Modifier.size(44.dp), tint = MaterialTheme.colorScheme.onSurfaceVariant)
         Spacer(Modifier.height(12.dp))
         Text(title, fontSize = 20.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
@@ -320,7 +322,8 @@ private fun LyricsContent(song: Song, lyrics: LyricsState, synced: @Composable (
 @Composable
 private fun SongHeader(song: Song) {
     val context = LocalContext.current
-    Row(Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.surfaceContainer).padding(20.dp, 12.dp), verticalAlignment = Alignment.CenterVertically) {
+    Row(Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.surfaceContainer).padding(horizontal = gutter(20.dp, LYRICS_WIDTH), vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically) {
         Artwork(song.artworkUrl, 56)
         Column(Modifier.weight(1f).padding(horizontal = 14.dp).semantics(mergeDescendants = true) {}) {
             Text(song.title, fontWeight = FontWeight.SemiBold, fontSize = 17.sp, maxLines = 2, overflow = TextOverflow.Ellipsis)
@@ -339,6 +342,9 @@ private fun Artwork(url: String?, sizeDp: Int) {
         if (url != null) AsyncImage(url, null, Modifier.fillMaxSize(), contentScale = ContentScale.Crop)
     }
 }
+
+/** El ancho de la letra en una ventana ancha: más, y los ojos tienen que viajar. */
+private val LYRICS_WIDTH = 640.dp
 
 /** La línea se enciende 0,3 s antes: una que llega tarde parece más desfasada que una que llega pronto. */
 private const val LEAD = 0.3
@@ -370,7 +376,7 @@ private fun SyncedLyrics(lines: List<es.altamirano.letras.core.LyricLine>, posit
     }
     val instrumental = stringResource(R.string.instrumental_break)
     LazyColumn(Modifier.fillMaxSize().nestedScroll(drag), state = list,
-        contentPadding = PaddingValues(start = 24.dp, end = 24.dp, top = 32.dp, bottom = 320.dp),
+        contentPadding = PaddingValues(start = gutter(24.dp, LYRICS_WIDTH), end = gutter(24.dp, LYRICS_WIDTH), top = 32.dp, bottom = 320.dp),
         verticalArrangement = Arrangement.spacedBy(22.dp)) {
         itemsIndexed(lines, key = { _, l -> l.id }) { i, line ->
             val isCurrent = i == current
@@ -378,7 +384,7 @@ private fun SyncedLyrics(lines: List<es.altamirano.letras.core.LyricLine>, posit
             val scale = if (isCurrent) 1.04f else 1f
             Text(line.text.ifEmpty { "♪" }, fontSize = 24.sp, fontWeight = FontWeight.Bold, lineHeight = 30.sp,
                 color = if (isCurrent) MaterialTheme.colorScheme.onBackground else MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.fillMaxWidth().widthIn(max = 640.dp)
+                modifier = Modifier.fillMaxWidth()
                     .graphicsLayer { scaleX = scale; scaleY = scale; transformOrigin = androidx.compose.ui.graphics.TransformOrigin(0f, 0.5f)
                         alpha = if (isCurrent) 1f else if (past) 0.45f else 0.7f }
                     .semantics { selected = isCurrent; if (line.text.isEmpty()) contentDescription = instrumental })
@@ -390,7 +396,7 @@ private fun SyncedLyrics(lines: List<es.altamirano.letras.core.LyricLine>, posit
 @Composable
 private fun PlainLyrics(text: String, label: Boolean) {
     SelectionContainer {
-        Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(24.dp)) {
+        Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = gutter(24.dp, LYRICS_WIDTH), vertical = 24.dp)) {
             if (label) Text(stringResource(R.string.not_synced), fontSize = 13.sp, color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(bottom = 16.dp))
             Text(text, fontSize = 20.sp, fontWeight = FontWeight.SemiBold, lineHeight = 30.sp)
@@ -419,7 +425,7 @@ private fun HistoryScreen(onClose: () -> Unit) {
     }) { pad ->
         if (songs.isEmpty()) { Box(Modifier.padding(pad)) { Empty(Icons.Filled.MusicNote, stringResource(R.string.no_songs), stringResource(R.string.history_empty_hint)) }; return@Scaffold }
         val days = songs.groupBy { Instant.ofEpochMilli(it.heardAt).atZone(zone).toLocalDate() }
-        LazyColumn(Modifier.padding(pad).fillMaxSize(), contentPadding = PaddingValues(bottom = 24.dp)) {
+        LazyColumn(Modifier.padding(pad).fillMaxSize(), contentPadding = PaddingValues(start = gutter(0.dp), end = gutter(0.dp), bottom = 24.dp)) {
             days.forEach { (day: LocalDate, entries) ->
                 item(key = "d$day") {
                     Text(day.format(dayFmt).replaceFirstChar { it.titlecase(locale) }, Modifier.padding(20.dp, 18.dp, 20.dp, 6.dp),
@@ -434,6 +440,7 @@ private fun HistoryScreen(onClose: () -> Unit) {
                                 else -> false
                             }
                         })
+                        var menu by remember { mutableStateOf(false) }
                         SwipeToDismissBox(swipe, backgroundContent = {
                             val toEnd = swipe.dismissDirection == SwipeToDismissBoxValue.StartToEnd
                             Box(Modifier.fillMaxSize().background(if (toEnd) Color(0xFFE91E63) else MaterialTheme.colorScheme.error).padding(horizontal = 20.dp),
@@ -441,7 +448,15 @@ private fun HistoryScreen(onClose: () -> Unit) {
                                 Text(stringResource(if (toEnd) (if (e.favorite) R.string.unmark_favorite else R.string.mark_favorite) else R.string.delete), color = Color.White)
                             }
                         }) {
-                            Row(Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.surfaceContainer).clickable { open = e }.padding(16.dp, 8.dp),
+                            // Con ratón no se desliza: el clic derecho da lo mismo que el gesto.
+                            DropdownMenu(menu, { menu = false }) {
+                                DropdownMenuItem(text = { Text(stringResource(if (e.favorite) R.string.unmark_favorite else R.string.mark_favorite)) },
+                                    onClick = { menu = false; history.toggleFavorite(e.id) })
+                                DropdownMenuItem(text = { Text(stringResource(R.string.delete), color = MaterialTheme.colorScheme.error) },
+                                    onClick = { menu = false; history.delete(e.id) })
+                            }
+                            Row(Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.surfaceContainer).onSecondaryClick { menu = true }
+                                .clickable { open = e }.padding(16.dp, 8.dp),
                                 verticalAlignment = Alignment.CenterVertically) {
                                 Artwork(e.song.artworkUrl, 46)
                                 Column(Modifier.weight(1f).padding(horizontal = 12.dp)) {
@@ -501,7 +516,7 @@ private fun AboutScreen(onClose: () -> Unit) {
             actions = { TextButton(onClick = onClose) { Text(stringResource(R.string.done)) } },
             colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background))
     }) { pad ->
-        Column(Modifier.padding(pad).fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
+        Column(Modifier.padding(pad).fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = gutter(), vertical = 16.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
             Section { Text(stringResource(R.string.about_text)) }
             Section(stringResource(R.string.credits)) {
                 Pair(stringResource(R.string.music_recognition), "Shazam")
