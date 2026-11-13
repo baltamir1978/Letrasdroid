@@ -2,6 +2,9 @@
 
 package es.altamirano.letras.ui
 
+import es.altamirano.common.ui.onSecondaryClick
+import es.altamirano.common.ui.gutter
+import es.altamirano.common.ui.CenteredScroll
 import android.Manifest
 import android.app.Application
 import android.content.Intent
@@ -413,7 +416,7 @@ private fun HistoryScreen(onClose: () -> Unit) {
     var open by remember { mutableStateOf<HeardSong?>(null) }
     var confirm by remember { mutableStateOf(false) }
     open?.let { e -> BackHandler { open = null }; PastLyrics(e.song) { open = null }; return }
-    val locale = Locale.getDefault()
+    val locale = androidx.compose.ui.platform.LocalLocale.current.platformLocale
     val dayFmt = DateTimeFormatter.ofPattern("EEEE d MMMM yyyy", locale)
     val timeFmt = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT).withLocale(locale)
     val zone = ZoneId.systemDefault()

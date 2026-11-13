@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Letras</string>
+    <string name="app_name" translatable="false">Letras</string>
     <string name="about_text">Abre la app cerca de la música: Letras reconoce la canción que suena y muestra su letra sincronizada con ella.</string>
     <string name="open_settings">Abrir Ajustes</string>
     <string name="about">Acerca de Letras</string>

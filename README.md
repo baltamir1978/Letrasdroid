@@ -6,7 +6,7 @@ Shazam y muestra su letra sincronizada, resaltando la línea que se está cantan
 Versión para Android de [Letras (Letrasios)](https://github.com/baltamir1978/Letrasios), la app de
 iOS, escrita desde cero en Kotlin + Jetpack Compose, con la app original como especificación.
 
-**Estado: 0.1** (5-nov-2026), sin probar todavía en el móvil. Ver `CLAUDE.md`.
+**Estado: 0.1.2** (13-nov-2026), sin probar todavía en el móvil. Ver `CLAUDE.md`.
 
 ## Qué hace
 
@@ -33,8 +33,13 @@ servicios de Google).
 
 ```sh
 Tools/instalar-entorno.sh      # JDK 17, Android SDK y Gradle en ~/Android, sin sudo
-./gradlew testDebugUnitTest assembleRelease
+./gradlew testDebugUnitTest lintDebug assembleRelease
 ```
+
+Hace falta clonar también [droid-common](https://github.com/baltamir1978/droid-common) **en la
+carpeta de al lado** (`../droid-common`): el código que comparten las apps de Android, que Gradle
+incluye desde ahí. En cada push, GitHub Actions pasa las pruebas y el lint
+(`.github/workflows/android.yml`).
 
 La release se firma con una clave que vive fuera del repositorio (`~/.android/claves/`); sin ella
 sale sin firmar.

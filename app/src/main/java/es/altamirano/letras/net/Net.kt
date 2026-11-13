@@ -1,7 +1,7 @@
 package es.altamirano.letras.net
 
 import es.altamirano.letras.core.Lrc
-import es.altamirano.letras.core.ShazamSignature
+import es.altamirano.common.shazam.ShazamSignature
 import es.altamirano.letras.core.Song
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

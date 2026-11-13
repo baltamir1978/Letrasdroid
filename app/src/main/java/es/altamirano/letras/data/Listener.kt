@@ -10,7 +10,7 @@ import android.media.MediaRecorder
 import android.os.SystemClock
 import android.util.Log
 import es.altamirano.letras.core.Lyrics
-import es.altamirano.letras.core.ShazamSignature
+import es.altamirano.common.shazam.ShazamSignature
 import es.altamirano.letras.core.Song
 import es.altamirano.letras.net.Lrclib
 import es.altamirano.letras.net.Shazam

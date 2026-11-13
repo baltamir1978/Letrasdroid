@@ -4,7 +4,11 @@ Versión para Android de **Letras** (Letrasios, iOS), escrita **desde cero en Ko
 Compose**. Lo común a las apps de Android (firma, `versionCode`, secretos, distribución, ShazamKit)
 está en el `CLAUDE.md` de la carpeta de proyectos; aquí va lo propio de esta.
 
-## Estado (5-nov-2026)
+## Estado (13-nov-2026)
+
+**0.1.2 (13-nov-2026): mantenimiento.** `app_name` ya no se pide traducido (rompía el lint), reglas de copia de seguridad explícitas y el historial lee el idioma con `LocalLocale`. APK en `~/Documentos/Letras-0.1.2.apk`.
+
+**Común a las cinco apps (13-nov-2026):** dependencias al día (Gradle 9.9.1, AGP 9.5.1 con Kotlin integrado —ya no se aplica `kotlin.android`—, Kotlin 2.4.21, Compose BOM 2026.09, `compileSdk` 37, `targetSdk` 36); **código compartido en `../droid-common`** (aquí: `ShazamSignature` (con su prueba byte a byte) y las piezas de modo escritorio; `core/ShazamSignature.kt` y `ui/Adaptive.kt` ya no existen aquí), que hay que tener clonado al lado (`includeBuild` en `settings.gradle.kts`); **CI** en GitHub Actions (`.github/workflows/android.yml`: pruebas, lint y APK de depuración en cada push); `lintDebug` pasa sin errores y forma parte de la comprobación (`./gradlew testDebugUnitTest lintDebug`). `NonObservableLocale` va como aviso: al cambiar el idioma Android recrea la actividad. **Nada de esto está probado en el móvil.**
 
 **0.1.1 (6-nov-2026): modo escritorio** — en ventana ancha (modo escritorio, tableta) el contenido se centra a 720 dp con el margen como `contentPadding` (la rueda del ratón desplaza también sobre él), y la actividad no se recrea al redimensionar (`configChanges`). Piezas en `ui/Adaptive.kt`; sin probar en modo escritorio de verdad. La letra, centrada a 640 dp; las pantallas vacías, desplazables si la ventana es baja (`CenteredScroll`), y en el historial el clic derecho hace lo mismo que deslizar (favorita / borrar). APK en `~/Documentos/Letras-0.1.1.apk`.
 
