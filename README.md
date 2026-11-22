@@ -6,7 +6,7 @@ Shazam y muestra su letra sincronizada, resaltando la línea que se está cantan
 Versión para Android de [Letras (Letrasios)](https://github.com/baltamir1978/Letrasios), la app de
 iOS, escrita desde cero en Kotlin + Jetpack Compose, con la app original como especificación.
 
-**Estado: 0.1.2** (13-nov-2026), sin probar todavía en el móvil. Ver `CLAUDE.md`.
+**Estado: 0.1.3** (22-nov-2026), sin probar todavía en el móvil. Ver `CLAUDE.md`.
 
 ## Qué hace
 

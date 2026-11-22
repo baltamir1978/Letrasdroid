@@ -14,8 +14,8 @@ android {
         applicationId = "es.altamirano.letras"
         minSdk = 31          // Android 12
         targetSdk = 36
-        versionCode = 3
-        versionName = "0.1.2"
+        versionCode = 4
+        versionName = "0.1.3"
     }
 
     // La clave de release vive fuera del repositorio; sin ella la release sale sin firmar.

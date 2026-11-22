@@ -4,7 +4,9 @@ Versión para Android de **Letras** (Letrasios, iOS), escrita **desde cero en Ko
 Compose**. Lo común a las apps de Android (firma, `versionCode`, secretos, distribución, ShazamKit)
 está en el `CLAUDE.md` de la carpeta de proyectos; aquí va lo propio de esta.
 
-## Estado (13-nov-2026)
+## Estado (22-nov-2026)
+
+**0.1.3 (22-nov-2026): aspecto Material 3 Expressive, como GpsDroid.** Lo pidió Bruno («dale una vuelta al aspecto del resto de apps con este lenguaje de diseño; lo seleccionado debería estar en un verde clarito, no en el mismo gris»). El tema sale de `droid-common` (`ui/Expressive.kt`: `AppTheme` = `MaterialExpressiveTheme` + `MotionScheme.expressive()` + esquinas grandes, y `withBrandSelection`, que pone `secondaryContainer` —chips, indicador de la barra, botones segmentados— en un tono clarito del color de la app). material3 1.5.0-rc01 en todas. El esquema sólo fijaba unos pocos colores y `secondaryContainer` quedaba en el lila de Material por defecto: ahora es verde clarito. APK en `~/Documentos/Letras-0.1.3.apk`. **Sin probar en el móvil.**
 
 **0.1.2 (13-nov-2026): mantenimiento.** `app_name` ya no se pide traducido (rompía el lint), reglas de copia de seguridad explícitas y el historial lee el idioma con `LocalLocale`. APK en `~/Documentos/Letras-0.1.2.apk`.
 

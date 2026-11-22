@@ -132,6 +132,8 @@ import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.util.Locale
+import es.altamirano.common.ui.AppTheme
+import es.altamirano.common.ui.withBrandSelection
 
 class LetrasApp : Application() {
     val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
@@ -163,7 +165,8 @@ fun LetrasTheme(content: @Composable () -> Unit) {
     else lightColorScheme(primary = BrandLight, onPrimary = BgLight, background = BgLight, surface = BgLight,
         surfaceContainer = SurfaceLight, surfaceVariant = SurfaceLight, onBackground = Color(0xFF0E1A16), onSurface = Color(0xFF0E1A16),
         onSurfaceVariant = Color(0xFF4A5E56))
-    MaterialTheme(colorScheme = scheme, content = content)
+    // Material 3 Expressive (droid-common): lo seleccionado, en verde clarito (sin esto era lila).
+    AppTheme(scheme.withBrandSelection(if (dark) BrandDark else BrandLight, dark), content = content)
 }
 
 /**
