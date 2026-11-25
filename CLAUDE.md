@@ -4,7 +4,9 @@ Versión para Android de **Letras** (Letrasios, iOS), escrita **desde cero en Ko
 Compose**. Lo común a las apps de Android (firma, `versionCode`, secretos, distribución, ShazamKit)
 está en el `CLAUDE.md` de la carpeta de proyectos; aquí va lo propio de esta.
 
-## Estado (22-nov-2026)
+## Estado (25-nov-2026)
+
+**Probada en el móvil (25-nov-2026):** Bruno: «letras funciona perfecto» (reconocimiento con el micrófono y letra sincronizada incluidos). Deja de constar como «sin probar» lo de las versiones 0.1 a 0.1.3.
 
 **0.1.3 (22-nov-2026): aspecto Material 3 Expressive, como GpsDroid.** Lo pidió Bruno («dale una vuelta al aspecto del resto de apps con este lenguaje de diseño; lo seleccionado debería estar en un verde clarito, no en el mismo gris»). El tema sale de `droid-common` (`ui/Expressive.kt`: `AppTheme` = `MaterialExpressiveTheme` + `MotionScheme.expressive()` + esquinas grandes, y `withBrandSelection`, que pone `secondaryContainer` —chips, indicador de la barra, botones segmentados— en un tono clarito del color de la app). material3 1.5.0-rc01 en todas. El esquema sólo fijaba unos pocos colores y `secondaryContainer` quedaba en el lila de Material por defecto: ahora es verde clarito. APK en `~/Documentos/Letras-0.1.3.apk`. **Sin probar en el móvil.**
 
@@ -43,9 +45,7 @@ Hecho, traducido de Letrasios:
 - Colores de `Theme.swift` (verde #0B6F53 / menta #4FD8A6), icono de iOS
   (`Tools/icono-desde-ios.sh`), 6 idiomas desde el catálogo de iOS (`Tools/strings-desde-ios.py`).
 
-Falta: probarlo en el móvil (sobre todo cuánto tarda en reconocer con el micrófono y si la
-sincronización cuadra; el audio de `AudioRecord` llega con algo de retraso, sin corregir),
-widgets o accesos directos si Bruno los quiere.
+Falta: widgets o accesos directos si Bruno los quiere.
 
 ## La especificación es el original
 
